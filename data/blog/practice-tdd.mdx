@@ -1,0 +1,90 @@
+---
+title: 'Practice TDD : Write Test First, then Code'
+date: '2022-04-11'
+lastmod: '2022-04-11'
+tags: ['unit test', 'software engineering']
+draft: false
+summary: 'By writing tests first, developers gain confidence in their codes functionality and are better equipped to catch and fix issues early in the development process, ultimately leading to more efficient and error-free software development.'
+images: ['/static/images/blog/tdd_img1.png']
+authors: ['default']
+---
+
+<div className={'flex items-center justify-center'}>
+  ![thumbnail](/static/images/blog/tdd_img1.png)
+</div>
+<div className={'flex items-center justify-center'}>Test Driven Development in a Nutshell</div>
+
+Test Driven Development (TDD) merupakan suatu cara / pendekatan dalam software engineering, yang mana seorang programmer membuat serangkaian test yang akan menvalidasi behaviour dan komponen yang akan dilakukan oleh kode yang ditulis sebelum mengimplementasikan fungsionalitas dan fitur pada suatu perangkat lunak. Test pada setiap fitur/komponen tersebut dibuat lebih dahulu dan akan dijalankan setelah selesai dibuat. Jika test tidak berhasil maka developer akan mulai menulis kode fitur yang akan membuat test tersebut berhasil.
+
+# Langkah Langkah TDD
+
+Dalam melakukan pendekatan TDD, proses yang biasanya terjadi adalah :
+
+1. Buat test (unit / fungsional)
+2. Jalankan semua test dan lihat hasilnya
+3. Jika gagal, buat kode agar test lulus
+4. Jalankan kembali test
+5. Refactor kode
+6. Ulangi step 1–5
+
+<div className={'flex items-center justify-center'}>![img](/static/images/blog/tdd_img2.webp)</div>
+<br />
+
+# Permasalahan pada Traditional Testing
+
+Traditional testing merujuk pada pembuatan test (manual / automation) setelah fitur dan fungsionalitas diimplementasikan. Terdapat masalah pada pendekatan ini, yakni pembuatan test diakhir yang mengharuskan seluruh kode pada fungsionalitas dapat ditest atau ter-cover
+
+Keadaan tersebut akan semakin memburuk apabila kode fitur yang dibuat ternyata berlebihan dibanding fitur semula yang ingin dibuat, istilah lainnya adalah overengineering. Pada akhirnya test yang perlu dibuat akan lebih banyak dan lebih kompleks
+
+<div className={'flex items-center justify-center'}>![img](/static/images/blog/tdd_img3.webp)</div>
+<div className={'flex items-center justify-center'}>IsEven Over Engineering</div>
+
+TDD dapat menghindari penulisan code overengineering tersebut. Dengan menerapkan TDD, test dibuat akan disesuaikan dengan requirement fitur yang diharapkan, lalu seorang engineer akan bertugas untuk menulis kode sederhana dan simple untuk test tersebut berhasil. Dengan paradigma itu, kode yang dibuat adalah kode diperlukan seadanya.
+
+# Manfaat Mengaplikasikan TDD
+
+1. Saat proses membuat test, fokus kita akan tertuju pada apa behaviour atau fungsi yang diinginkan dari kode yang akan ditulis. Saat berpindah ke fase menulis kode, spesifikasi program yang detail telah dimiliki oleh developer
+2. Efisiensi waktu saat kita ingin mengubah kode. Hal ini dikarenakan ekspektasi detail dari program telah kita miliki pada bagian test yang membuat developer berfokus pada satu hal
+3. Mengurangi waktu debugging saat kita melakukan refactor/perubahan pada kode. Test tersebut dapat dijalankan secara otomatis untuk mengetahui perubahan behaviour apa yang terjadi saat refactoring.
+4. Kode yang lebih fleksibel, maintainable dan dapat dengan mudah di-extend.
+
+<br />
+
+TDD memiliki tiga tahapan tersebut juga sering dikenal sebagai **RED**, **GREEN**, **REFACTOR**. Mari bahas lebih lanjut masing-masing tahapannya.
+
+## RED
+
+Ketika spesifikasi untuk suatu fitur sudah didapatkan, hal pertama kali yang perlu dilakukan adalah membuat sebuah unit test yang merepresentasikan fungsionalitas dari sebagian fitur tersebut. Contohnya, terdapat fitur untuk membuat sebuah navbar. Test pertama yang bisa dibuat adalah mengecek apakah menu-menu pada navbar sudah tampil. Ketika test tersebut dijalankan, dapat dipastikan test tersebut akan failed.
+
+## GREEN
+
+Setelah dibuat test yang sudah disebutkan pada tahap RED, maka tahap selanjutnya adalah membuat implementasi code yang dapat membuat test tersebut lolos. Artinya, developer perlu membuat komponen navbar yang berisi menu-menu pada test. Apabila test dijalankan kembali, seharusnya test tersebut berhasil.
+
+## REFACTOR
+
+Pada tahap refactor, code yang sudah dibuat dapat diperbaiki/di-improve, tetapi tetap lolos test yang sudah dibuat. Pada kasus navbar misalnya, proses refactor dapat berupa perbaikan styling pada komponen. Tentunya mengubah warna tulisan pada navbar tidak akan mengubah status test yang sudah ada.
+
+# TDD Pada Agile Development
+
+Agile development membuat proses pembuatan produk terjadi secara incremental maka terdapat saran perbaikan pada setiap iterasinya. Saran perbaikan tersebut dapat memuat banyak hal seperti bug fix, fitur fitur lain yang dirasa diperlukan pada iterasi selanjutnya, dan kepastian agar software dapat berjalan sesuai kebutuhan. Pendekatan TDD membuat kolaborasi tim developer dan client menjadi lebih efisien dalam waktu penyelesaian task di suatu iterasi. Hal tersebut terjadi karena pembuatan kode tidak menghabiskan waktu yang lebih lama dalam implementasinya.
+
+Berikut ini adalah contoh TDD yang dibuat di tim PPL Paytungan saya :
+
+<div className={'flex items-center justify-center'}>![img](/static/images/blog/tdd_img4.webp)</div>
+
+Pada saat testcase terbuat tentu akan membuat testnya gagal karena belum diimplementasikannya page login, dan page tersebut sesuai dengan backlog yang ingin dibuat. Karena gagal maka commit untuk membuat test case tersebut diberi label **RED**.
+
+<div className={'flex items-center justify-center'}>![img](/static/images/blog/tdd_img5.webp)</div>
+
+Tahapan selanjutnya adalah mulai membuat komponen login
+
+<div className={'flex items-center justify-center'}>![img](/static/images/blog/tdd_img6.webp)</div>
+<div className={'flex items-center justify-center text-center'}>
+  login page with phone number input
+</div>
+
+Lalu penambahan kode tersebut membuat kode menjadi passed dan dapat dicommit menggunakan label **GREEN**
+
+Saat semua telah menjadi green, code dapat di refactor sesuai dengan kebutuhan. Ketika fitur selesai, test dapat dijalankan untuk melihat code coverage dan status berhasilnya test. Contoh pada paytungan :
+
+<div className={'flex items-center justify-center'}>![img](/static/images/blog/tdd_img7.webp)</div>

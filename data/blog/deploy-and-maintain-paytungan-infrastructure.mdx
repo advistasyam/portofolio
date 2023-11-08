@@ -1,0 +1,81 @@
+---
+title: 'Deploy and Maintain Paytungan Infrastructure'
+date: '2022-04-11'
+lastmod: '2022-04-11'
+tags: ['dev ops', 'infrastructure']
+draft: false
+summary: 'a comprehensive guide that provides readers with valuable information on the deployment and management of the infrastructure for a specific software or service named Paytungan.'
+images: ['/static/images/blog/deploy_img1.webp']
+authors: ['default']
+---
+
+<div className={'flex items-center justify-center'}>
+  ![thumbnail](/static/images/blog/deploy_img1.webp)
+</div>
+<div className={'flex items-center justify-center'}>Google Cloud Platform Logo</div>
+
+Dalam pengembangan perangkat lunak, membuat infrastruktur yang tepat pada software merupakan langkah untuk memenuhi kebutuhan aplikasi, ekspansi / scallability, hingga sistem keamanan data. Pada beberapa kesempatan, beberapa software engineer menghiraukan sistem dan infrastruktur pada software karena berfokus pada tampilan jadi. Paytungan merupakan aplikasi split bill yang berbasis aplikasi web. Namun apa itu infrastruktur secara general pada aplikasi web ?
+
+# Software Architecture
+
+Software architecture dari sebuah sistem menjelaskan hubungan antara tiap komponen dan cara komponen tersebut berinteraksi. Singkatnya, software architecture bertindak sebagai blueprint yang menyediakan abstraksi untuk memanage kompleksitas dari sistem dan menerapkan koordinasi/komunikasi antar komponen.
+
+Arsitektur dari suatu software harus didesain dengan tujuan yang spesifik. Tujuan spesifik ini harus sejalan dengan tujuan dari tools atau alat alat yang digunakan. Cara kerja dan kebutuhan dari suatu software berdampak pada pemilihan device yang digunakan, maka software harus dibuat dengan sangat baik dan matang.
+
+# Capacity Planning
+
+Tidak menutup kemungkinan akan terjadi limit saat hitting service yang kami sediakan karena berbagai hal contohnya saat terjadi peningkatan pengguna aplikasi. Limit tersebut dapat menyebabkan insiden yang membuat aplikasi kami kesulitan diakses dan dapat berdampak buruk pada operasi bisnisnya.
+
+Maka sebelum menentukan infrastuktur untuk setiap service kami membuat planning yang sesuai dengan ekspektasi workload pada aplikasi yang dirancang. Terdapat beberapa konsep yang harus terjawab saat capacity planning yaitu :
+
+- Dengan ekspektasi jumlah pengguna dan workload hit service, berapa jumlah kapasitas awal yang dibutuhkan ?
+- Berapa kapasitas yang masih kosong pada iterasi saat ini ?
+- Dengan berputarnya iterasi dan bertambahnya pengguna karena adanya fitur baru, apakah diperlukan untuk melakukan scale infrastruktur pada iterasi ini ?
+- Apakah infrastruktur yang sekarang mendukung kemudahan dalam melakukan scale / ekspansi ?
+
+# Infrastruktur Backend
+
+![img](/static/images/blog/deploy_img2.jpeg)
+
+Aplikasi Backend kami menggunakan Google Cloud Platform sebagai provider cloud. Hal ini karena GCP mudah dioperasikan dan setiap tim PPL diberikan 50$ credit untuk membentuk infrastrukturnya sendiri. Aplikasi Django kami dijalankan menggunakan cloud run yang dapat di scale dengan mudah. Pada saat artikel ini dibuat, kami memiliki 3 instance dalam 1 VM Google Compute Engine dan satu instance PorstgreSQL sebagai database.
+
+# Infrastruktur Frontend
+
+![img](/static/images/blog/deploy_img3.webp)
+
+Sistem Frontend kami menggunakan PAAS (Platform As A Service) Vercel sebagai host dari aplikasi Next JS yang kami buat. Banyak pertimbangan yang dilakukan sebelum memilih vercel sebagai host server frontend kami. Alasan tersebut antara lain :
+
+1. Vercel adalah creator dari framework NextJS
+2. Vercel auto scale yang memungkinkan kita tidak perlu handle penambahan instance
+3. Vercel CLI memudahkan developer membuat cicd code ke instance vercel.
+4. Integrated usage analytics sebagai insight tim paytungan dalam memonitor data ingres dan egress serta jumlah request harian pada website kami.
+
+<div className={'flex items-center justify-center'}>
+  ![img](/static/images/blog/deploy_img4.webp)
+</div>
+<div className={'flex items-center justify-center'}>Usage Analytics Paytungan di Vercel</div>
+
+# Error Handling Menggunakan Sentry
+
+Error pada suatu aplikasi dapat terjadi karena berbagai hal antara lain :
+
+- Logical errors
+- Generated errors
+- Compile-time errors
+- Runtime errors
+
+Error handling merujuk pada suatu kegiatan meresponse suatu error dan usaha untuk memperbaiki error yang terjadi. Sebelum melakukan error handling, developer harus paham mengenai error yang terjadi dan harus dengan cepat menyelesaikannya. Agar informasi mengenai error yang terjadi cepat diketahui, maka diperlukan tindakan antisipasi dan monitoring sebagai deteksi awal error. Pada nyatanya, error dapat terjadi kapan saja pada aplikasi dan menjadi tantangan pada setiap developer.
+
+<div className={'flex items-center justify-center'}>
+  ![img](/static/images/blog/deploy_img5.webp)
+</div>
+<div className={'flex items-center justify-center'}>Sentry Error Dashboard</div>
+
+Sentry merupakan tools untuk melakukan error monitoring. Sentry menyediakan library dan SDK yang dapat dipasang sesuai bahasa pemrogramman yang dipakai. Contoh pada aplikasi backend, kami memasang sentry untuk monitoring ketika code masuk ke bagian error (biasanya terjadi pada code try catch).
+
+<div className={'flex items-center justify-center'}>
+  ![img](/static/images/blog/deploy_img6.webp)
+</div>
+<div className={'flex items-center justify-center'}>Discord Webhook</div>
+
+Untuk mempercepat kami meng-acknowledge suatu error yang terjadi, kami mengimplementasikan webhook sentry dan diinstall pada discord server kami, maka tiap error yang terjadi akan masuk ke dalam notifikasi sebagai alert kami. Diharapkan kami dapat segera melakukan hotfix dan mencari root cause secepat mungkin setelah error keluar.

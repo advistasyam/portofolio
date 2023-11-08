@@ -1,0 +1,103 @@
+---
+title: 'Refactoring for Better Infrastructure'
+date: '2022-05-10'
+lastmod: '2022-05-10'
+tags: ['software engineering']
+draft: false
+summary: 'Highlights the potential challenges and risks associated with infrastructure refactoring, such as downtime, data migration issues, or compatibility problems. Strategies for mitigating these challenges may be explored, providing readers with practical insights into how to navigate complex refactoring projects effectively.'
+images: ['/static/images/blog/refactoring_img1.jpeg']
+authors: ['default']
+---
+
+<div className={'flex items-center justify-center'}>
+  ![thumbnail](/static/images/blog/refactoring_img1.jpeg)
+</div>
+
+Menurut <u>Martin Fowler Refactoring</u>, definisi refactoring adalah
+
+> “Refactoring (noun): a change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its observable behavior.”
+
+Secara bahasa indonesia dapat dikatakan kita memperbaiki struktur dan desain kode tanpa mengubah behavior kode yang sudah ada. Dalam software engineering, refactoring merupakan hal yang sering terjadi pada proses pengembangannya. Tujuannya adalah meningkatkan code quality dan bermanfaat akan terlihat dalam jangka panjang ketika terdapat improvement software yang akan dilakukan.
+
+# When To REFACTOR ?
+
+Menurut website refactoring.guru, terdapat 4 waktu yang tepat untuk melakukan refactoring, yaitu :
+
+**1. When we add new feature**
+
+imajinasikan suatu keadaan dimana kita melanjutkan kode dari developer sebelumnya dan kode tersebut “kotor” sehingga kita tidak dapat memahami dengan waktu yang singkat contoh 5 menit pertama. Tentu hal ini akan membuat developer kesal dan dapat berdampak buruk pada produktivitas. sebelum memulai ke fitur baru, kode yang buruk dapat dilakukan refactor terlebih dahulu agar flow dan fungsi kode dapat lebih mudah dimengerti.
+
+**2. When we fix bug**
+
+saat memperbaiki bug, salah satu pendekatan yang dapat dilakukan adalah melakukan refactoring. Dengan refactoring, bug yang tersembunyi dapat menjadi terlihat karena kode yang lebih rapi. Selain itu juga refactoring dapat membuat proses debugging lebih cepat dan meminimalisir waktu pengembangan.
+
+**3. When we code review**
+
+keadaan berikut membutuhkan kerja sama dengan orang lain. kode yang telah kita buat belum tentu dapat dibaca dengan jelas dengan orang lain, maka dilakukan code review terlebih dahulu. Saran yang diberikan peer dapat menjadi masukan yang penting dalam melakukan refactoring.
+
+**4. Rule Of Three**
+
+maksud dari rule of three adalah ketika kita menambahkan hal yang serupa sampai dengan tiga kali, maka berhenti menggunakan step yang sama lakukan refactoring. Beberapa hal yang dapat dilakukan adalah membuat suatu reuseable code seperti component atau function.
+
+Manfaat yang ditemukan dalam melakukan refactoring adalah :
+
+1. Code lebih mudah untuk dimodifikasi
+2. Code lebih mudah untuk dipahami
+3. Salah satu cara berbagi ilmu antar anggota tim
+
+# Implementasi pada PPL 2022
+
+pada PPL 2022, kami menggunakan sonarqube untuk dapat mengetahui kelemahan yang terdapat pada kode aplikasi. Sonarqube menampilkan informasi mengenai coverage,bugs,code smells,duplication, dan security issues.
+
+<div className={'flex items-center justify-center'}>
+  ![img](/static/images/blog/refactoring_img2.webp)
+</div>
+
+Perhatikan pada line 62 dan line 67, karena konsep javascript yang hoisting semua variable ke scope paling atas maka line 67 dianggap sebagai variable responseData pertama dengan demikian responseData pada line 62 dianggap duplikat. Hal berikut dapat membingungkan anggota tim, maka dengan itu saya ubah menjadi
+
+```javascript
+const responseDataError = await response.json()
+```
+
+hal ini dikarenakan juga karena variable tersebut merupakan data error yang dikirimkan oleh API.
+
+<div className={'flex items-center justify-center'}>
+  ![img](/static/images/blog/refactoring_img3.webp)
+</div>
+<div className={'flex items-center justify-center text-center'}>
+  Staging and Production Backend URL
+</div>
+
+<div className={'flex items-center justify-center'}>
+  ![img](/static/images/blog/refactoring_img4.webp)
+</div>
+
+Refactoring lainnya adalah merubah hardcode link URL backend. Menurut rule of three, hardcode tersebut telah ditemukan lebih dari 3 kali maka saya memutuskan untuk membuat fungsi baru untuk mendapatkan BE_URL yang tepat. Kegiatan tersebut membuat kode yang ditulis lebih singkat dan lebih mudah dipahami. Selain itu juga apabila terdapat perpindahan url, maka kode yang dibuah hanya pada bagian fungsi getBackendUrl() saja.
+
+# Metode Refactoring
+
+<div className={'flex items-center justify-center'}>
+  ![img](/static/images/blog/refactoring_img5.webp)
+</div>
+
+Menurut buku Refactoring oleh Martin Fowler, Terdapat metode metode refactoring, buku tersebut membahas dan menjabarkan dengan membagi kategori yang dipisah berdasarkan tujuannya. Beberapa tujuan dan pendekatan menurut buku fowler adalah :
+
+**1. Grouping functions**
+
+Grouping function berfokus pada penggabungan suatu metode fungsi menjadi satu objek class saja. Sehingga import dan export fungsi tersebut hanya memanggil classnya saja. Contoh implementasi metodenya adalah <u>Combine Functions into Class</u>.
+
+**2. Organizing data**
+
+Organizing data yang dimaksud adalah dalam hal menyimpan variable variable penting. Seperti contoh pada PPL Paytungan adalah URL untuk menyimpan static file pada GCP. Maka URL tersebut disimpan menjadi suatu konstanta yang akan dipanggil. Refactoring seperti ini disebut <u>Replace Magic Literal</u>.
+
+**3. Encapsulation**
+
+Proses Encapsulation adalah unified function and variable dimana kita menyimpan data dan metode pada satu class, dengan encapsulation juga kita dapat menyimpan varible class hingga tidak dapat diakses oleh objek lain. Contohnya adalah metode <u>Inline Class</u>.
+
+**4. Inline**
+
+Inline sendiri bertujuan untuk membentuk if else statement menjadi lebih singkat yaitu 1 baris. Penggunaan pada Javascript yaitu menggunakan ternary operator. Contoh metode refactoring seperti ini adalah <u>Inline Function</u>.
+
+**5. Simplifying conditional logic**
+
+Logic panjang if else hingga nested if else kadang menyulitkan developer untuk memahaminya, Maka diperlukan simplifikasi. Contoh metode refactoring <u>Replace Nested Conditionals with Guard Clauses</u>.

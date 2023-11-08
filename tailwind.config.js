@@ -30,6 +30,9 @@ module.exports = {
       colors: {
         primary: colors.teal,
         gray: colors.neutral,
+        grad1: '#ED1C7D',
+        grad2: '#CD33D5',
+        grad3: '#5824FE',
       },
       typography: (theme) => ({
         DEFAULT: {

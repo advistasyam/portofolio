@@ -1,0 +1,161 @@
+---
+title: 'How to be A Pro in Code Version Control'
+date: '2022-02-28'
+lastmod: '2022-02-28'
+tags: ['version control', 'software engineering']
+draft: false
+summary: 'The article provides essential insights and strategies for mastering code version control systems. It emphasizes the significance of version control in software development and offers practical guidance for becoming proficient in this critical area.'
+images: ['/static/thumbnail/how-to-be-pro.webp']
+authors: ['default']
+---
+
+<div className={'flex items-center justify-center'}>
+  ![thumbnail](/static/thumbnail/how-to-be-pro.webp)
+</div>
+<div className={'flex items-center justify-center'}>
+  Dont create new folder for your version management
+</div>
+
+Dalam bidang teknologi informasi, version control merupakan satu kompetensi penting harus yang dimiliki oleh setiap software engineer. Software enginner yang pro harus dapat membuat kode yang dibuatnya dapat diroll back menjadi versi sebelumnya yang stabil apabila terdapat kesalahan tanpa harus menyimpan banyak versi kode yang dapat memakan memori. Version control membuat setiap baris kode baru yang dibuat dapat dipantau log kegiatannya. Sistem version control yang umumnya digunakan adalah git.
+
+# Apa itu Git ?
+
+Git merupakan aplikasi perangkat lunak yang free dan open source yang menggunakan merkle tree sebagai struktur data dalam menyimpan history kejadian / commit yang terjadi di folder data. Git dapat mengatur dan menjadi sistem manajemen kode sebagai pengendali revisi terhadap fitur baru pada kode. Folder yang menggunakan git ditandai dengan terdapat folder .git. Terdapat cloud service sebagai tempat menyimpan folder kode git yang telah dibuat seperti contoh : gitlab, github, dan bitbucket.
+
+# Mengapa Harus Git ?
+
+- Dapat digunakan secara publik
+- Dokumentasi API yang mudah
+- Kontrol versi kode yang memudahkan pekerjaan secara kelompok
+- Terdapat cloud service penyimpan repository git
+
+# Memulai Menggunakan Git
+
+Git dapat digunakan dengan menginstall git command line pada lama resmi pada <a href="https://git-scm.com/">tautan</a> berikut. Setelah command line diinstall, git dapat dimulai dengan menjalankan command :
+
+- git init
+
+Folder yang telah menggunakan git sebagai version controlnya dapat dinamakan sebagai repository. Setelah dimulai developer dapat memulai menuliskan kode program yang akan dirancang.
+
+Setiap perubahan yang terjadi, developer dapat membuat log yang menjelaskan deskripsi dari kode baru yang telah dibuat. Log tersebut dinamakan sebagai commit. Untuk membuat commit, developer harus menetapkan file baru mana yang akan dibuat commit dengan cara
+
+- git add `${file baru yang dibuat}`
+
+untuk membuat snapshot seluruh file menggunakan command
+
+- git add .
+
+Lalu commit selanjutnya dibuat dengan command
+
+- git commit -m “deskripsi fitur baru yang dibuat”
+
+Dan kamu telah membuat satu commit yang dapat direvisi ketika terdapat kesalahan dikemudian hari.
+
+# Integrasi dengan cloud service
+
+pada folder git yang telah dimulai, developer terlebih dahulu harus membuat repository pada cloud service yang akan digunakan seperti contoh github.
+
+![create_new_repository](/static/images/blog/git_img1.gif)
+
+Setelah membuat repository kosong pada cloud, developer dapat menghubungkan folder git yang telah dibuat dengan menghubungkan folder tersebut secara remote dengan command
+
+- git remote add origin `${url_empty_repository}`
+
+# How To Use Git as A Pro
+
+Dalam penggunaannya, terdapat beberapa git command dan istilah yang harus dipahami seorang software engineer yang pro dalam konsep git. Git command ini berhubungan dengan git flow dan merge request yang akan dibuat oleh developer lain. Apa itu git flow dan dan merge request ?
+
+## Git Flow
+
+![git_flow](/static/images/blog/git_img2.webp)
+
+Git memiliki cabang utama yang merupakan pusat kode, biasa dinamakan master / main. Dalam pembuatan kode secara bersama sama, best practice yang dapat digunakan adalah membuat percabangan / branch baru dari setiap orang dan setiap fitur yang ingin diimplementasi, seperti contoh membuat branch dengan nama advis/landing_page
+
+Setiap kode yang dibuat oleh orang yang berbeda tidak memungkinkan berjalan secara seri dikarenakan hal tersebut membuat pekerjaan tidak efisien, hal yang terjadi adalah pengerjaan kode secara paralel. Oleh karena itu setiap branch yang dibuat dapat mengupdate kode yang dibuat dengan branch utama main dengan membuat pull menggunakan command
+
+- git pull origin `${nama_branch}`
+
+selain branch main, command tersebut dapat digunakan untuk branch lain pada kondisi branch tersebut membutuhkan kode dari branch lain.
+
+## Merge Request
+
+Setelah seorang developer membuat fitur baru pada branch yang telah dibuat, developer tersebut dapat membuat request untuk menggabungkan kode baru yang telah dibuat ke branch utama menggunakan merge request
+
+![meme_git](/static/images/blog/git_img3.webp)
+
+Merge request dapat dibuat setelah code dicommit. Branch baru tersebut akan dicek oleh git kemungkinan conflict yang terjadi pada kode baru yang dibuat. Hal hal yang dapat membuat merge request terdapat conflict yaitu :
+
+- Kode tidak update terhadap branch utama
+
+atau
+
+- Terdapat dua commit berbeda pada satu file yang sama
+
+Sebagai software engineer yang pro, conflict pada git harus cepat diselesaikan sehingga tidak menjadi blocking untuk memberikan deliverable terbaik kepada pengguna.
+
+![merge request example](/static/images/blog/git_img4.webp)
+
+Gambar diatas merupakan salah satu contoh merge request yang terdapat pada kelompok PPL saya yaitu paytungan. Merge request yang dibuat ditujukan pada branch staging yang merupakan branch development kami. Sebelum merge request diterima, setiap developer dapat mereview code yang akan digabungkan, kegiatan tersebut biasa dinamakan code review, selain itu juga MR dapat dilihat hasil jobs pipeline yang dijalankan, pada bagian berikut dapat diperiksa apakah terdapat kegagalan pada code dan bagaimana hasil test pada MR. Apabila code review telah selesai dan disetujui, MR dapat dieksekusi dan kode baru telah tersimpan pada branch yang dituju
+
+## Vscode to Resolve Conflict
+
+![img](/static/images/blog/git_img5.webp)
+
+Resolve conflict terjadi karena ketidaksesuaian antara commit baru dengan commit yang terjadi di remote secara paralel. Terdapat istilah di vscode yang membedakan commit user dengan commit conflict remote yaitu :
+
+1. Current Change (Perubahan yang dicommit pengguna secara local)
+2. Incoming Change (Perubahan remote)
+
+Opsi opsi penyelesaian yang ditawarkan terdapat 3, yaitu accept current change, accept incoming change, dan accept both. Accept both akan menyimpan kedua code dan tidak akan ada code yang terhapus antar keduanya. Ini merupakan fitur penting dan menurut saya fitur yang “helpful” pada vscode karena kita dapat membandingkan kedua code yang conflict.
+
+# Advanced Control
+
+Git merupakan tool yang canggih, perintah git tidak hanya digunakan pada fungsi fungsi low level seperti git push dan git pull, terdapat beberapa kondisi dimana diperlukan suatu langkah lain agar code tidak merusak code branch dituju akibat adanya aktivitas push code yang asynchronous.
+
+## Git Rebase
+
+> Pada paytungan dibutuhkan page input, namun saat sedang develop page inpput terdapat commit baru pada branch main untuk menambahkan button component, bagaimana langkah yang tepat agar commit terlihat lebih rapi dan memindahkan cabang branch menjadi HEAD pada branch main
+
+gunakan : git rebase
+
+![img](/static/images/blog/git_img6.jpeg)
+
+Penggunaan git rebase dapat membuat history commit menjadi lebih jelas dengan menampilkan commit-commit yang telah dibuat, sehingga diharapkan tidak akan muncul commit message seperti “merged from branch dev”
+
+> git merge menggabungkan seluruh state terakhir dari kedua branch, sementara rebase memindahkan commit history.
+
+Command line tambahan :
+
+```
+git rebase <branch_name>
+git rebase --abort # undo the rebase
+
+### Syntax Tambahan
+git rebase --continue
+git rebase --skip
+```
+
+Dengan mengeksekusi rebase terdapat kemungkinan untuk terjadinya conflict, apabila terjadi developer diharuskan untuk resolve conflict terlebih dahulu dan apabila telah diselesaikan, rebase dapat dilanjutkan dengan menggunakan tambahan command tambahan continue. Command skip dapat dilakukan apabila developer ingin skip commit yang mengakibatkan conflict.
+
+## Git Stash
+
+![img](/static/images/blog/git_img7.jpeg)
+
+> Bayangkan suatu kondisi dimana kita telah membuat banyak progres, namun ternyata dari branch main terdapat revert pada branch main karena terdapat kesalahan dan error, tetapi kita kita ingin menyimpan perubahan yang kita miliki
+
+Ketika hal tersebut terjadi, developer dapat menggunakan git stash untuk menyimpan progress ke suatu stack yang menyimpan modifikasi pada lokal dan merevert pekerjaan yang sedang dilakukan ke posisi HEAD
+
+## Git Fetch
+
+Git fetch merupakan command untuk mengupdate git lokal dengan git remote yang terdapat di cloud. Misalkan saat melakukan perubahan dilokal, teman kita push suatu branch baru bernama branch_baru dan kita ingin melihat pekerjaan teman tersebut secara lokal. Dengan state yang dimiliki command git checkout branch_baru akan terjadi error karena branch tersebut masih terdapat di cloud, disinilah peran command git fetch digunakan. Setelah git fetch dieksekusi kita dapat pindah ke branch baru maupun pull commit baru yang terdapat pada main.
+
+# In Conclution
+
+version control dapat mempermudah melihat revisi kode dan mempermudah untuk melakukan pekerjaan menulis kode secara bersama dan paralel. Version control yang umum digunakan adalah git. Menggunakan git terdapat banyak command dalam pengoperasiannya yaitu git add hingga git push. Terdapat conflict apabila kode yang ditulis memiliki line yang bertabrakan pada commit yang berbeda. Seorang engineer yang hebat harus paham dengan keseluruhan konsep tersebut dan dapat menyelesaikan conflict yang mungkin dapat terjadi.
+
+# Referensi :
+
+- https://dev.to/dheyson_alvess/how-to-integrate-git-flow-in-your-team-3f43
+- https://git-scm.com/doc
+- https://id.wikipedia.org/wiki/Git
+- https://git-scm.com/docs/git-rebase

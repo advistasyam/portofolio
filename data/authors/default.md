@@ -1,16 +1,14 @@
 ---
-name: Tails Azimuth
-avatar: /static/images/avatar.png
-occupation: Professor of Atmospheric Science
-company: Stanford University
-email: address@yoursite.com
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+name: Advis Tasyah Mulia
+avatar: /static/images/my_self.jpeg
+occupation: Software Engineer
+company: Easycash by Fintopia
+email: advistasyam@gmail.com
+twitter: https://twitter.com/licacila_
+linkedin: https://www.linkedin.com/in/advis-tasyah-mulia-5209791a1/
+github: https://github.com/advistasyam
 ---
 
-Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
+Advis Tasyah Mulia is an aspiring software engineer, keen to make human life easier by providing simpler ways to solve problems because he is a good fan of good life.
 
-He leads the clean energy group which develops 3D air pollution-climate models, writes differential equation solvers, and manufactures titanium plated air ballons. In his free time he bakes raspberry pi.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+Advis is Computer Science Fresh Graduate from University of Indonesia in 3,5 years. He is also passionate to solve computational problems and communicate complex solutions to non-technical stakeholders.

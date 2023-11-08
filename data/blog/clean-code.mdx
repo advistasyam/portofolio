@@ -1,0 +1,126 @@
+---
+title: 'Being Classy Programmer with Practice Clean Code in Javascript'
+date: '2022-03-21'
+lastmod: '2022-03-21'
+tags: ['clean code', 'javascript']
+draft: false
+summary: 'By adhering to clean coding principles, programmers can enhance the quality of their code, collaborate more effectively with team members, and ultimately become classy programmers who produce reliable and elegant solutions in the world of JavaScript development.'
+images: ['/static/images/blog/clean_img1.webp']
+authors: ['default']
+---
+
+<div className={'flex items-center justify-center'}>
+  ![thumbnail](/static/images/blog/clean_img1.webp)
+</div>
+
+Membuat code yang bersih merupakan kewajiban setiap programmer terlebih pada kondisi bekerja dalam tim. Bayangkan ketika anda membuka kembali kode lama anda dan anda membutuhkan waktu 5 menit atau lebih untuk dapat kembali memahami flow code yang telah dibuat. Kejadian tersebut tentu akan membuat penyelesaian pekerjaan tidak efisien apabila tidak hanya 1 file yang akan diteliti kembali. Akan tambah diperparah apabila yang membaca code tersebut adalah rekan tim anda yang tidak memiliki pengalaman membuat code tersebut.
+
+Code yang clean adalah code yang dapat digunakan kembali dan code yang dapat mudah dimengerti. Dengan adanya clean code akan membuat tugas dan pekerjaan menjadi lebih efisien untuk dapat diselesaikan.
+
+> Writing clean code is what you must do in order to call yourself a professional. There is no reasonable excuse for doing anything less than your best. — Robert C. Martin
+
+Kriteria Dasar Clean Code
+
+> “So if you want to go fast, if you want to get done quickly, if you want your code to be easy to write, make it easy to read.”
+> ― Robert C. Martin, Clean Code: A Handbook of Agile Software Craftsmanship
+
+Agar dapat mencapai code yang lebih rapi, berikut adalah hal hal yang harus diperhatikan :
+
+- class kecil
+- gunakan nama variable yang deskriptif
+- code yang dibuat harus memiliki abstraksi yang sama
+- hindari duplikasi
+- memiliki argumen yang kurang dari 3
+- mengerjakan 1 task saja
+
+# Konvensi Nama Pada Javascript
+
+Javascript memiliki aturan dasar tersendiri pada penamaan. Penamaan ini berlaku pada setiap komponen yang terdapat di javascript baik variable, class, maupun function.
+
+Pada variable dan function, javascript biasa menggunakan camelCase sebagai identifiernya dan semua nama dimulai menggunakan letter / alphabet.
+
+```javascript
+# Example
+const submitFormHandler = () => {
+   return "submitted"
+}
+# Bad example (not so descriptive)
+const kjnqwdinq = () => {
+    return "submitted"
+}
+```
+
+# Gunakan Typing (Pada Typescript)
+
+![img](/static/images/blog/clean_img2.webp)
+
+Javascript telah menjadi bahasa pemrogramman yang mudah karena dapat menetukan tipe datanya sendiri ketika variable / function dibuat. Dynamic typing menjadi problem ketika variable tersebut memiliki behavior yang berubah ubah dan tidak statis. Hal tersebut membuat code menjadi lebih sullit dimengerti. Alasan tersebut lah yang menjadi awal dari lahirnya typescript, dimana kita dapat menentukan tipe suatu variable di javascript.
+
+```javascript
+# Javascript
+let evenNumber = [2,4,6,8]
+let evenNumber = "a string" # Passed
+# Typescript
+let evenNumber: Array<number> = [2,4,6,8]
+let evenNumber = "a string" # will be detected as type violation
+```
+
+## Small Classes
+
+Javascript memang fokus pada penggunaan function, tetapi javascript dapat digunakan untuk membuat konsep OOP. Dalam membuat class di javascript, diutamakan untuk membuat class yang memiliki satu tujuan dan class jangan dibuat menjadi kompleks, seperti contoh
+
+```javascript
+class componentButton {
+  // state or field
+  constructor(){
+    this.width = "65px"
+    this.height = "30px"
+  }
+  // behavior or method
+  function render(textParam="default text") {
+    return "<button height={this.height} width={this.width}>{textParam}</button>"
+  }
+}
+```
+
+# DRY (Don’t Repeat Your Self)
+
+![img](/static/images/blog/clean_img3.webp)
+
+Dalam kelompok PPL kami paytungan, kami menggunakan javascript mainly pada repo aplikasi frontend kami yaitu react. Dalam menggunakan react hal yang sering kami jumpai penggunaan kode html yang terus berulang. Contoh :
+
+```javascript
+# REPEATED 5 TIMES (BAD)
+const PageHome = () => {
+  return (
+    <div><span>card 1</span></div>
+    <div><span>card 2</span></div>
+    <div><span>card 3</span></div>
+    <div><span>card 4</span></div>
+    <div><span>card 5</span></div>
+  )
+}
+
+# Create new component
+const CardComponent = (props) => {
+  return(
+    <div>
+      <span>{props.text}</span>
+    </div>
+  )
+}
+
+const PageHome = () => {
+  return (
+    <CardComponent text={card 1} />
+    <CardComponent text={card 2} />
+    <CardComponent text={card 3} />
+    <CardComponent text={card 4} />
+    <CardComponent text={card 5} />
+  )
+}
+```
+
+# Conclution
+
+Membuat kode yang clean dapat meningkatkan efisiensi ketika bekerja di dalam tim, dengan membuat code yang lebih mudah dipahami membuat kerja sama dalam tim menjadi lebih apik dan deliverable produk dapat disampaikan dengan cepat
