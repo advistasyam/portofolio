@@ -55,7 +55,7 @@ export default function Home({ posts }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <div className="flex h-[200vh] flex-col lg:h-screen lg:flex-row">
+      <div className="flex flex-col lg:h-screen lg:flex-row">
         <div className="flex h-[50%] w-full items-center px-16 lg:h-[100%] lg:w-[60%]">
           <div className="flex w-full flex-col items-center pt-36 lg:items-start lg:pt-0">
             <motion.p
@@ -147,7 +147,7 @@ export default function Home({ posts }) {
         </div>
       </div>
 
-      <div className="mx-auto mt-4 max-w-7xl divide-y divide-gray-200 px-16 dark:divide-gray-700">
+      <div className="mx-auto mt-4 max-w-7xl divide-y divide-gray-200 px-6 dark:divide-gray-700 md:px-16">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Latest Projects
@@ -200,7 +200,7 @@ export default function Home({ posts }) {
         </div>
       </div>
 
-      <div className="mx-auto mt-4 max-w-7xl divide-gray-200 px-16 dark:divide-gray-700 lg:mt-12">
+      <div className="mx-auto mt-4 max-w-7xl divide-gray-200 px-6 dark:divide-gray-700 md:px-16 lg:mt-12">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             My Latest Blog

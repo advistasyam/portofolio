@@ -5,13 +5,13 @@ const Card = ({ title, description, imgSrc, href, isLeft, role, techStack }) => 
   <div
     className="md p-4 md:w-1/2"
     style={{ maxWidth: '544px' }}
-    data-aos={isLeft ? 'fade-down-right' : 'fade-down-left'}
+    data-aos={'fade-up'}
     data-aos-duration="1000"
   >
     <div
       className={`${
         imgSrc && 'h-full'
-      }  overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-gray-700`}
+      }  overflow-hidden rounded-2xl border-2 border-gray-200 border-opacity-60 dark:border-gray-700`}
     >
       {imgSrc &&
         (href ? (
