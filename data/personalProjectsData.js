@@ -13,6 +13,13 @@ const personalProjectsData = [
     techStack: ['Go'],
     href: 'https://github.com/advistasyam/golang-basecode',
   },
+  {
+    title: 'Acil Pages',
+    description: `Acil pages is a page to search movies, series or games and we can save the searched items to local storage.`,
+    imgSrc: '/static/project/project-acilpages.png',
+    techStack: ['Next.js', 'Chakra UI'],
+    href: 'https://acilpages-advistasyam.vercel.app/',
+  },
 ]
 
 export default personalProjectsData
