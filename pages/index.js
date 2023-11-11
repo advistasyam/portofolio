@@ -101,14 +101,14 @@ export default function Home({ posts }) {
             </motion.p>
             <motion.a
               className="mt-12 w-fit cursor-pointer justify-center rounded-lg bg-grad2 px-4 py-2 font-bold text-white hover:opacity-80"
-              href="https://drive.google.com/file/d/1KhmsHyEYLp97hCuVAVNGFEenb8sYlJtD/view"
+              href="https://drive.google.com/file/d/1c3CIHHx5gLXRbd2x0UgXn8hqPYl1UP0d/view"
               target="_blank"
               rel="noreferrer"
               animate={{ opacity: 1.0 }}
               initial={{ opacity: 0 }}
               transition={{ ease: 'easeInOut', duration: 0.5, delay: 2.5 }}
             >
-              <p className="">Download Resume</p>
+              <p className="">See Resume</p>
             </motion.a>
           </div>
         </div>
