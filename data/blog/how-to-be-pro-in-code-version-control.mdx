@@ -16,142 +16,142 @@ authors: ['default']
   Dont create new folder for your version management
 </div>
 
-Dalam bidang teknologi informasi, version control merupakan satu kompetensi penting harus yang dimiliki oleh setiap software engineer. Software enginner yang pro harus dapat membuat kode yang dibuatnya dapat diroll back menjadi versi sebelumnya yang stabil apabila terdapat kesalahan tanpa harus menyimpan banyak versi kode yang dapat memakan memori. Version control membuat setiap baris kode baru yang dibuat dapat dipantau log kegiatannya. Sistem version control yang umumnya digunakan adalah git.
+In the field of information technology, version control is a crucial skill that every software engineer must possess. A proactive software engineer should be able to roll back their code to a stable previous version in case of errors without storing multiple versions that could consume memory. Version control allows monitoring of every new line of code created through activity logs. The commonly used version control system is Git.
 
-# Apa itu Git ?
+# What is Git ?
 
-Git merupakan aplikasi perangkat lunak yang free dan open source yang menggunakan merkle tree sebagai struktur data dalam menyimpan history kejadian / commit yang terjadi di folder data. Git dapat mengatur dan menjadi sistem manajemen kode sebagai pengendali revisi terhadap fitur baru pada kode. Folder yang menggunakan git ditandai dengan terdapat folder .git. Terdapat cloud service sebagai tempat menyimpan folder kode git yang telah dibuat seperti contoh : gitlab, github, dan bitbucket.
+Git is a free and open-source software application that uses a merkle tree as a data structure to store the history of events/commits that occur in a data folder. Git can organize and serve as a revision control system for new code features. Folders using Git are marked by the presence of a .git folder. There are cloud services available for storing Git code folders, such as gitlab, github, and bitbucket.
 
-# Mengapa Harus Git ?
+# Why Use Git ?
 
-- Dapat digunakan secara publik
-- Dokumentasi API yang mudah
-- Kontrol versi kode yang memudahkan pekerjaan secara kelompok
-- Terdapat cloud service penyimpan repository git
+- Can be used publicly
+- Easy-to-use API documentation
+- Version control simplifies group work
+- Cloud services for storing Git repositories are available
 
-# Memulai Menggunakan Git
+# Getting Started with Git
 
-Git dapat digunakan dengan menginstall git command line pada lama resmi pada <a href="https://git-scm.com/">tautan</a> berikut. Setelah command line diinstall, git dapat dimulai dengan menjalankan command :
+Git can be used by installing the git command line from the official website at the following link: <a href="https://git-scm.com/">Git Official Website</a>. After installing the command line, Git can be initiated by running the command:
 
 - git init
 
-Folder yang telah menggunakan git sebagai version controlnya dapat dinamakan sebagai repository. Setelah dimulai developer dapat memulai menuliskan kode program yang akan dirancang.
+A folder that uses Git as its version control can be referred to as a repository. Once initiated, developers can start writing the code for their project.
 
-Setiap perubahan yang terjadi, developer dapat membuat log yang menjelaskan deskripsi dari kode baru yang telah dibuat. Log tersebut dinamakan sebagai commit. Untuk membuat commit, developer harus menetapkan file baru mana yang akan dibuat commit dengan cara
+With every change, developers can create a log describing the new code they've written. This log is called a commit. To make a commit, developers need to specify which new files they want to commit by using the following command:
 
-- git add `${file baru yang dibuat}`
+- git add `${new created file}`
 
-untuk membuat snapshot seluruh file menggunakan command
+To create a snapshot of all files, use the command:
 
 - git add .
 
-Lalu commit selanjutnya dibuat dengan command
+Then, the next step (commit) is made using the command:
 
-- git commit -m “deskripsi fitur baru yang dibuat”
+- git commit -m "description of the new feature created"
 
-Dan kamu telah membuat satu commit yang dapat direvisi ketika terdapat kesalahan dikemudian hari.
+And you have made a commit that can be revised in case of errors later on.
 
-# Integrasi dengan cloud service
+# Integration with Cloud Service
 
-pada folder git yang telah dimulai, developer terlebih dahulu harus membuat repository pada cloud service yang akan digunakan seperti contoh github.
+In a Git-enabled folder, developers first need to create a repository on the chosen cloud service, such as GitHub for example.
 
 ![create_new_repository](/static/images/blog/git_img1.gif)
 
-Setelah membuat repository kosong pada cloud, developer dapat menghubungkan folder git yang telah dibuat dengan menghubungkan folder tersebut secara remote dengan command
+After creating an empty repository on the cloud, developers can link the existing Git folder by establishing a remote connection using the command:
 
 - git remote add origin `${url_empty_repository}`
 
 # How To Use Git as A Pro
 
-Dalam penggunaannya, terdapat beberapa git command dan istilah yang harus dipahami seorang software engineer yang pro dalam konsep git. Git command ini berhubungan dengan git flow dan merge request yang akan dibuat oleh developer lain. Apa itu git flow dan dan merge request ?
+In its usage, there are several Git commands and terms that a proficient software engineer must understand in the context of Git flow and merge requests created by other developers. What are Git flow and merge requests?
 
 ## Git Flow
 
 ![git_flow](/static/images/blog/git_img2.webp)
 
-Git memiliki cabang utama yang merupakan pusat kode, biasa dinamakan master / main. Dalam pembuatan kode secara bersama sama, best practice yang dapat digunakan adalah membuat percabangan / branch baru dari setiap orang dan setiap fitur yang ingin diimplementasi, seperti contoh membuat branch dengan nama advis/landing_page
+Git has a main branch, commonly referred to as master/main, which serves as the central code repository. When collaborating on code, a best practice is to create new branches for each individual and each feature to be implemented. For example, creating a branch named advis/landing_page.
 
-Setiap kode yang dibuat oleh orang yang berbeda tidak memungkinkan berjalan secara seri dikarenakan hal tersebut membuat pekerjaan tidak efisien, hal yang terjadi adalah pengerjaan kode secara paralel. Oleh karena itu setiap branch yang dibuat dapat mengupdate kode yang dibuat dengan branch utama main dengan membuat pull menggunakan command
+Having different individuals code run in a serial manner is not efficient, as it leads to inefficiencies in the work process. Instead, code development should occur in parallel. Therefore, each branch created can update its code with the main branch by pulling the changes using the command:
 
-- git pull origin `${nama_branch}`
+- git pull origin `${branch_name}`
 
-selain branch main, command tersebut dapat digunakan untuk branch lain pada kondisi branch tersebut membutuhkan kode dari branch lain.
+This command can be used for branches other than the main branch, in situations where a branch needs code from another branch.
 
 ## Merge Request
 
-Setelah seorang developer membuat fitur baru pada branch yang telah dibuat, developer tersebut dapat membuat request untuk menggabungkan kode baru yang telah dibuat ke branch utama menggunakan merge request
+After a developer creates a new feature in the branch they have created, they can request to merge the new code into the main branch using a merge request.
 
 ![meme_git](/static/images/blog/git_img3.webp)
 
-Merge request dapat dibuat setelah code dicommit. Branch baru tersebut akan dicek oleh git kemungkinan conflict yang terjadi pada kode baru yang dibuat. Hal hal yang dapat membuat merge request terdapat conflict yaitu :
+A merge request can be initiated after the code has been committed. Git will check the newly created branch for possible conflicts that may occur in the new code. Conflicts in a merge request can arise due to:
 
-- Kode tidak update terhadap branch utama
+- Code not being updated against the main branch
 
-atau
+or
 
-- Terdapat dua commit berbeda pada satu file yang sama
+- Two different commits existing in the same file
 
-Sebagai software engineer yang pro, conflict pada git harus cepat diselesaikan sehingga tidak menjadi blocking untuk memberikan deliverable terbaik kepada pengguna.
+As a professional software engineer, conflicts in Git should be resolved promptly to avoid any blockages in delivering the best possible outcome to users.
 
 ![merge request example](/static/images/blog/git_img4.webp)
 
-Gambar diatas merupakan salah satu contoh merge request yang terdapat pada kelompok PPL saya yaitu paytungan. Merge request yang dibuat ditujukan pada branch staging yang merupakan branch development kami. Sebelum merge request diterima, setiap developer dapat mereview code yang akan digabungkan, kegiatan tersebut biasa dinamakan code review, selain itu juga MR dapat dilihat hasil jobs pipeline yang dijalankan, pada bagian berikut dapat diperiksa apakah terdapat kegagalan pada code dan bagaimana hasil test pada MR. Apabila code review telah selesai dan disetujui, MR dapat dieksekusi dan kode baru telah tersimpan pada branch yang dituju
+The image above is an example of a merge request from my PPL group, Paytungan. The merge request is directed to the staging branch, which is our development branch. Before a merge request is accepted, each developer can review the code to be merged, a practice commonly known as code review. Additionally, the MR allows us to see the results of the pipeline jobs that were run. In the following section, any failures in the code and the test results in the MR can be examined. Once the code review is completed and approved, the MR can be executed, and the new code will be saved in the intended branch.
 
 ## Vscode to Resolve Conflict
 
 ![img](/static/images/blog/git_img5.webp)
 
-Resolve conflict terjadi karena ketidaksesuaian antara commit baru dengan commit yang terjadi di remote secara paralel. Terdapat istilah di vscode yang membedakan commit user dengan commit conflict remote yaitu :
+Conflict resolution occurs due to discrepancies between the new commit and the parallel remote commit. In VSCode, there are terms that differentiate user commits from remote conflict commits :
 
-1. Current Change (Perubahan yang dicommit pengguna secara local)
-2. Incoming Change (Perubahan remote)
+1. Current Change (Changes committed by the user locally)
+2. Incoming Change (Remote changes)
 
-Opsi opsi penyelesaian yang ditawarkan terdapat 3, yaitu accept current change, accept incoming change, dan accept both. Accept both akan menyimpan kedua code dan tidak akan ada code yang terhapus antar keduanya. Ini merupakan fitur penting dan menurut saya fitur yang “helpful” pada vscode karena kita dapat membandingkan kedua code yang conflict.
+There are 3 resolution options offered: accept current change, accept incoming change, and accept both. Accepting both will keep both sets of code, and no code will be deleted between them. This is an important feature and, in my opinion, a helpful feature in VSCode as it allows us to compare the conflicting codes.
 
 # Advanced Control
 
-Git merupakan tool yang canggih, perintah git tidak hanya digunakan pada fungsi fungsi low level seperti git push dan git pull, terdapat beberapa kondisi dimana diperlukan suatu langkah lain agar code tidak merusak code branch dituju akibat adanya aktivitas push code yang asynchronous.
+Git is a sophisticated tool; Git commands are not only used for low-level functions like git push and git pull. There are certain conditions where additional steps are required to prevent code from damaging the branch code due to asynchronous code push activities.
 
 ## Git Rebase
 
-> Pada paytungan dibutuhkan page input, namun saat sedang develop page inpput terdapat commit baru pada branch main untuk menambahkan button component, bagaimana langkah yang tepat agar commit terlihat lebih rapi dan memindahkan cabang branch menjadi HEAD pada branch main
+> In Paytungan, we need an input page. However, during the development of the input page, a new commit was made on the main branch to add a button component. What are the correct steps to make the commits look neater and move the branch to become the HEAD of the main branch?
 
-gunakan : git rebase
+Use: git rebase
 
 ![img](/static/images/blog/git_img6.jpeg)
 
-Penggunaan git rebase dapat membuat history commit menjadi lebih jelas dengan menampilkan commit-commit yang telah dibuat, sehingga diharapkan tidak akan muncul commit message seperti “merged from branch dev”
+The use of git rebase can make commit history clearer by displaying the commits that have been made, so hopefully, commit messages like 'merged from branch dev' won't appear.
 
-> git merge menggabungkan seluruh state terakhir dari kedua branch, sementara rebase memindahkan commit history.
+> git merge combines the entire last state of both branches, while rebase moves the commit history.
 
-Command line tambahan :
+Additional command line:
 
 ```
 git rebase <branch_name>
 git rebase --abort # undo the rebase
 
-### Syntax Tambahan
+### Additional Syntax
 git rebase --continue
 git rebase --skip
 ```
 
-Dengan mengeksekusi rebase terdapat kemungkinan untuk terjadinya conflict, apabila terjadi developer diharuskan untuk resolve conflict terlebih dahulu dan apabila telah diselesaikan, rebase dapat dilanjutkan dengan menggunakan tambahan command tambahan continue. Command skip dapat dilakukan apabila developer ingin skip commit yang mengakibatkan conflict.
+By executing rebase, there is a possibility of conflicts occurring. If conflicts occur, developers are required to resolve conflicts first. Once resolved, rebase can be continued using the additional 'continue' command. The 'skip' command can be used if developers want to skip commits that cause conflicts.
 
 ## Git Stash
 
 ![img](/static/images/blog/git_img7.jpeg)
 
-> Bayangkan suatu kondisi dimana kita telah membuat banyak progres, namun ternyata dari branch main terdapat revert pada branch main karena terdapat kesalahan dan error, tetapi kita kita ingin menyimpan perubahan yang kita miliki
+> Imagine a scenario where we have made a lot of progress, but there was a revert on the main branch due to mistakes and errors. However, we want to keep the changes we have made
 
-Ketika hal tersebut terjadi, developer dapat menggunakan git stash untuk menyimpan progress ke suatu stack yang menyimpan modifikasi pada lokal dan merevert pekerjaan yang sedang dilakukan ke posisi HEAD
+When this happens, developers can use git stash to save the progress to a stack that holds local modifications and revert the work being done to the HEAD position.
 
 ## Git Fetch
 
-Git fetch merupakan command untuk mengupdate git lokal dengan git remote yang terdapat di cloud. Misalkan saat melakukan perubahan dilokal, teman kita push suatu branch baru bernama branch_baru dan kita ingin melihat pekerjaan teman tersebut secara lokal. Dengan state yang dimiliki command git checkout branch_baru akan terjadi error karena branch tersebut masih terdapat di cloud, disinilah peran command git fetch digunakan. Setelah git fetch dieksekusi kita dapat pindah ke branch baru maupun pull commit baru yang terdapat pada main.
+Git fetch is a command used to update the local git with the remote git stored in the cloud. For example, when making changes locally, our friend pushes a new branch called 'new_branch,' and we want to see their work locally. With the current state, the 'git checkout new_branch' command will result in an error because the branch is still on the cloud. This is where the 'git fetch' command comes into play. After executing 'git fetch,' we can switch to the new branch or pull new commits available on the main branch.
 
 # In Conclution
 
-version control dapat mempermudah melihat revisi kode dan mempermudah untuk melakukan pekerjaan menulis kode secara bersama dan paralel. Version control yang umum digunakan adalah git. Menggunakan git terdapat banyak command dalam pengoperasiannya yaitu git add hingga git push. Terdapat conflict apabila kode yang ditulis memiliki line yang bertabrakan pada commit yang berbeda. Seorang engineer yang hebat harus paham dengan keseluruhan konsep tersebut dan dapat menyelesaikan conflict yang mungkin dapat terjadi.
+Version control makes it easier to view code revisions and facilitates collaborative coding efforts. Git is a widely used version control system. There are many commands in Git operations, ranging from 'git add' to 'git push.' Conflicts can occur if the code being written has conflicting lines with different commits. A great engineer must understand these concepts thoroughly and be able to resolve any conflicts that may arise.
 
 # Referensi :
 

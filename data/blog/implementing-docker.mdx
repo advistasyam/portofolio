@@ -13,23 +13,23 @@ authors: ['default']
   ![thumbnail](/static/images/blog/docker_img1.webp)
 </div>
 
-<br /># Docker Docker adalah sebuah aplikasi yang bersifat open source yang berfungsi sebagai wadah/container
-untuk mengepak/memasukkan sebuah software secara lengkap beserta semua hal lainnya yang dibutuhkan oleh
-software tersebut dapat berfungsi. Pengaturan software beserta file/hal pendukung lainnya akan menjadi
-sebuah Image (istilah yang diberikan oleh Docker). Kemudian sebuah instance dari Image tersebut kemudian
-disebut Container.
+<br />
 
-Docker sendiri diluncurkan pada tahun 2013 dan membuat perangkat lunak dapat diisolasi dari environent-nya, sehingga memecahkan masalah perangkat lunak yang hanya bisa dijalankan di suatu environment saja.
+# Docker
+
+Docker is an open-source application that serves as a container for packaging and deploying software along with all its dependencies, enabling the software to function seamlessly. The configuration of the software and its supporting files/dependencies are bundled into an Image (a term used in Docker). Subsequently, an instance of this Image is referred to as a Container.
+
+Docker was launched in 2013 and allows software to be isolated from its environment, thereby solving the problem of software being limited to running in specific environments only.
 
 # Container
 
-Container bekerja dengan cara membungkus code aplikasi beserta semua dependencies-nya agar dapat dijalankan di berbagai environment. Berbeda dengan Virtual Machines (VM) yang mempunyai OS sendiri pada setiap VM, Container adalah abstraksi dari app layer sehingga hanya membutuhkan satu OS, membuatnya dapat menjalankan lebih banyak aplikasi dan lebih ringan secara memori dan waktu proses daripada VM.
+Containers work by encapsulating application code along with all its dependencies, allowing it to run in various environments. Unlike Virtual Machines (VMs) that have their own OS for each VM, Containers are an abstraction of the app layer, requiring only one OS, enabling them to run more applications and being lighter in terms of memory and processing time compared to VMs.
 
-# Penggunaan
+# Usage
 
-Dalam penulisan perangkat lunak melalui GitLab, GitLab memfasilitasi penggunaan Docker Engine melalui GitLab Runner. Dengan GitLab CI/CD, Docker akan menjalankan aplikasi dalam container sesuai dengan image yang didefinisikan di awal.
+In software development using GitLab, GitLab facilitates the use of Docker Engine through GitLab Runner. With GitLab CI/CD, Docker will run the application in a container based on the image defined at the beginning.
 
-Misalnya kita sedang bekerja dengan Django melalui GitLab. Implementasi Docker dapat dimulai dengan membuat sebuah Dockerfile, misalnya seperti ini:
+For example, if we are working with Django via GitLab, implementing Docker can start with creating a Dockerfile, like this:
 
 ```dockerfile
 FROM python:3.8-slim
@@ -52,13 +52,13 @@ RUN python manage.py collectstatic --noinput
 RUN chmod +x run.sh
 ```
 
-FROM menjelaskan image apa yang akan dipakai dalam Docker atau bisa dibilang depencencies. Perintah RUN akan menjalankan suatu command yang tertulis, seperti RUN mkdir yang akan membuat directory baru pada container. terakhir, EXPOSE memberitahukan Docker bahwa container akan membuka port 8000 sebagai port aplikasi.
+FROM specifies the image to be used in Docker, which can be considered as dependencies. The RUN command executes a specified command, such as RUN mkdir, which creates a new directory in the container. Finally, EXPOSE informs Docker that the container will open port 8000 as the application port.
 
-Lalu, langkah selanjutnya yaitu membuat sebuah file **docker-compose.yml.**
+Next step is to create a **docker-compose.yml** file.
 
-docker-compose.yml adalah suatu file yml yang dapat digunakan untuk membuat kontrak container container apa saja yang ingin dibuat, dengan satu file docker-compose.yml kita dapat membuat 3 container yang fungsinya berbeda, seperti contoh 1 untuk webserver, 1 untuk backend, 1 untuk database.
+docker-compose.yml is a YAML file that can be used to define which containers need to be created. With one docker-compose.yml file, we can define 3 containers with different functions. For example, one for the web server, one for the backend, and one for the database.
 
-Misalnya seperti ini:
+For instance, it can look like this:
 
 ```yaml
 version: '2'
@@ -76,9 +76,9 @@ services:
       - db
 ```
 
-Service db menjelaskan image yang digunakan dalam database, lalu service django menjalankan framework yang digunakan. Perintah setelah command menjalankan webserver Django yang dibuat.
+The 'db' service specifies the image used for the database, while the 'django' service runs the chosen framework. The commands after this line execute the Django web server that has been set up.
 
-Terakhir adalah membuat file gitlab-ci.yml yang menyimpan konfigurasi untuk GitLab Runner. Contohnya seperti ini:
+Finally, you need to create a 'gitlab-ci.yml' file that stores the configuration for GitLab Runner. It might look something like this:
 
 ```yaml
 stages:
@@ -102,4 +102,4 @@ deploy_staging:
     - docker-compose up -d
 ```
 
-Dalam contoh, diimplementasikan 3 stages (test, build, dan deploy_staging). Stage pertama untuk test, yang kedua untuk membangun image, dan yang ketiga untuk menjalankan container sesuai dengan image yang dibuat.
+In this example, 3 stages are implemented (test, build, and deploy_staging). The first stage is for testing, the second one is for building the image, and the third one is for running the container based on the created image.

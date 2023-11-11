@@ -4,11 +4,11 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { AnimatePresence, motion } from 'framer-motion'
-import formatDate from '@/lib/utils/formatDate'
-import NewsletterForm from '@/components/NewsletterForm'
-import TypeIt from 'typeit-react'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import projectsData from '@/data/projectsData'
+import Card from '@/components/Card'
+import personalProjectsData from '@/data/personalProjectsData'
 
 const MAX_DISPLAY = 5
 
@@ -147,6 +147,59 @@ export default function Home({ posts }) {
         </div>
       </div>
 
+      <div className="mx-auto mt-4 max-w-7xl divide-y divide-gray-200 px-16 dark:divide-gray-700">
+        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            Latest Projects
+          </h1>
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+            recent project that i've been working on
+          </p>
+        </div>
+        <div className="container py-12">
+          <div className="-m-4 flex flex-wrap">
+            {projectsData.map((d, index) => (
+              <Card
+                key={d.title}
+                title={d.title}
+                description={d.description}
+                imgSrc={d.imgSrc}
+                href={d.href}
+                role={d.role}
+                techStack={d.techStack}
+                isLeft={index % 2 === 0}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Personal Project */}
+        <div className="mt-10 space-y-2 pb-8 pt-6 md:space-y-5">
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            Personal Projects
+          </h1>
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+            personal project that i've been worked on
+          </p>
+        </div>
+        <div className="container py-12">
+          <div className="-m-4 flex flex-wrap">
+            {personalProjectsData.map((d, index) => (
+              <Card
+                key={d.title}
+                title={d.title}
+                description={d.description}
+                imgSrc={d.imgSrc}
+                href={d.href}
+                role={d.role}
+                techStack={d.techStack}
+                isLeft={index % 2 === 0}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto mt-4 max-w-7xl divide-gray-200 px-16 dark:divide-gray-700 lg:mt-12">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
@@ -161,7 +214,7 @@ export default function Home({ posts }) {
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
             const { slug, date, title, summary, tags, images } = frontMatter
             return (
-              <li key={slug} className="py-12">
+              <li key={slug} className="py-12" data-aos="fade-up" data-aos-duration="1000">
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-center xl:space-y-0">
                     <Link href={`/blog/${slug}`}>
@@ -214,7 +267,7 @@ export default function Home({ posts }) {
         </ul>
       </div>
       {posts.length > MAX_DISPLAY && (
-        <div className="mx-16 flex justify-end text-base font-medium leading-6">
+        <div className="mx-auto flex max-w-7xl justify-end px-16 text-base font-medium leading-6">
           <Link
             href="/blog"
             className="text-grad2 hover:text-grad1 dark:hover:text-grad1"

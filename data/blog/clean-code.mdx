@@ -13,31 +13,31 @@ authors: ['default']
   ![thumbnail](/static/images/blog/clean_img1.webp)
 </div>
 
-Membuat code yang bersih merupakan kewajiban setiap programmer terlebih pada kondisi bekerja dalam tim. Bayangkan ketika anda membuka kembali kode lama anda dan anda membutuhkan waktu 5 menit atau lebih untuk dapat kembali memahami flow code yang telah dibuat. Kejadian tersebut tentu akan membuat penyelesaian pekerjaan tidak efisien apabila tidak hanya 1 file yang akan diteliti kembali. Akan tambah diperparah apabila yang membaca code tersebut adalah rekan tim anda yang tidak memiliki pengalaman membuat code tersebut.
+Writing clean code is a responsibility for every programmer, especially when working in a team. Imagine revisiting your old code and needing 5 minutes or more to understand the code flow you previously created. This situation can make the work inefficient, especially if it's not just one file that needs to be reviewed. It becomes even more challenging if your teammate, who doesn't have experience writing the code, needs to read it.
 
-Code yang clean adalah code yang dapat digunakan kembali dan code yang dapat mudah dimengerti. Dengan adanya clean code akan membuat tugas dan pekerjaan menjadi lebih efisien untuk dapat diselesaikan.
+Clean code is reusable and easy to understand. Having clean code makes tasks and work more efficient and manageable.
 
 > Writing clean code is what you must do in order to call yourself a professional. There is no reasonable excuse for doing anything less than your best. — Robert C. Martin
 
-Kriteria Dasar Clean Code
+# Basic Criteria of Clean Code
 
 > “So if you want to go fast, if you want to get done quickly, if you want your code to be easy to write, make it easy to read.”
 > ― Robert C. Martin, Clean Code: A Handbook of Agile Software Craftsmanship
 
-Agar dapat mencapai code yang lebih rapi, berikut adalah hal hal yang harus diperhatikan :
+To achieve cleaner code, here are some things to consider:
 
-- class kecil
-- gunakan nama variable yang deskriptif
-- code yang dibuat harus memiliki abstraksi yang sama
-- hindari duplikasi
-- memiliki argumen yang kurang dari 3
-- mengerjakan 1 task saja
+- Small classes
+- Use descriptive variable names
+- Code should have consistent abstractions
+- Avoid duplication
+- Functions should have fewer than 3 arguments
+- Do one thing and do it well
 
-# Konvensi Nama Pada Javascript
+# Naming Convention in Javascript
 
-Javascript memiliki aturan dasar tersendiri pada penamaan. Penamaan ini berlaku pada setiap komponen yang terdapat di javascript baik variable, class, maupun function.
+Javascript has its own basic rules for naming conventions. These conventions apply to every component in Javascript, including variables, classes, and functions.
 
-Pada variable dan function, javascript biasa menggunakan camelCase sebagai identifiernya dan semua nama dimulai menggunakan letter / alphabet.
+For variables and functions, Javascript commonly uses camelCase as the identifier, and all names start with a letter or alphabet.
 
 ```javascript
 # Example
@@ -50,11 +50,11 @@ const kjnqwdinq = () => {
 }
 ```
 
-# Gunakan Typing (Pada Typescript)
+# Use Typing (Only in Typescript)
 
 ![img](/static/images/blog/clean_img2.webp)
 
-Javascript telah menjadi bahasa pemrogramman yang mudah karena dapat menetukan tipe datanya sendiri ketika variable / function dibuat. Dynamic typing menjadi problem ketika variable tersebut memiliki behavior yang berubah ubah dan tidak statis. Hal tersebut membuat code menjadi lebih sullit dimengerti. Alasan tersebut lah yang menjadi awal dari lahirnya typescript, dimana kita dapat menentukan tipe suatu variable di javascript.
+Javascript has become an accessible programming language because it allows you to determine its data type when creating variables or functions. Dynamic typing becomes a problem when the variables have changing and non-static behaviors. This complexity makes the code harder to understand. This reason led to the birth of Typescript, where we can specify the data type of variable in Javascript
 
 ```javascript
 # Javascript
@@ -67,7 +67,7 @@ let evenNumber = "a string" # will be detected as type violation
 
 ## Small Classes
 
-Javascript memang fokus pada penggunaan function, tetapi javascript dapat digunakan untuk membuat konsep OOP. Dalam membuat class di javascript, diutamakan untuk membuat class yang memiliki satu tujuan dan class jangan dibuat menjadi kompleks, seperti contoh
+Javascript indeed focuses on the use of functions, but it can also be used to implement Object Oriented Programming (OOP) concepts. When creating classes in Javascript, it is advisable to create classes with a single purpose and avoid making them overly complex. For example,
 
 ```javascript
 class componentButton {
@@ -83,11 +83,11 @@ class componentButton {
 }
 ```
 
-# DRY (Don’t Repeat Your Self)
+## DRY (Don’t Repeat Your Self)
 
 ![img](/static/images/blog/clean_img3.webp)
 
-Dalam kelompok PPL kami paytungan, kami menggunakan javascript mainly pada repo aplikasi frontend kami yaitu react. Dalam menggunakan react hal yang sering kami jumpai penggunaan kode html yang terus berulang. Contoh :
+In our PPL group Paytungan, we mainly use Javascript in our frontend application repository, which is React. When working with React, we often encounter repetitive HTML code. For example :
 
 ```javascript
 # REPEATED 5 TIMES (BAD)
@@ -123,4 +123,4 @@ const PageHome = () => {
 
 # Conclution
 
-Membuat kode yang clean dapat meningkatkan efisiensi ketika bekerja di dalam tim, dengan membuat code yang lebih mudah dipahami membuat kerja sama dalam tim menjadi lebih apik dan deliverable produk dapat disampaikan dengan cepat
+Creating clean code can enhance efficiency when working in a team. Code that is easy to understand fosters better collaboration within the team, allowing products to be delivered quickly and effectively.

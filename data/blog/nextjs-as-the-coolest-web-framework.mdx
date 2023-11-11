@@ -13,56 +13,57 @@ authors: ['default']
   ![thumbnail](/static/images/blog/next_img1.png)
 </div>
 
-Penggunaan teknologi informasi sudah menjadi hal yang lumrah pada masyarakat dengan menggunakan banyak media, contohnya aplikasi web. Aplikasi web digunakan oleh banyak orang dengan sektor yang berbeda. Sektor tersebut adalah lain perdagangan / e-commerce seperti Tokopedia dan e-learning seperti contoh aplikasi web Scele yang digunakan mahasiswa Fasilkom UI. Dalam penggunaannya aplikasi web harus memiliki performa yang baik ketika digunakan banyak orang sehingga tidak mengganggu proses kerja yang terjadi pada aplikasi. Selain performa dibutuhkan aplikasi web teroptimisasi dalam mesin pencarian / SEO (Search Engine Optimisation). Terdapat kerangka kerja web yang mendukung performa dan SEO yang baik, contohnya adalah NextJs.
+The use of information technology has become commonplace in society through various means, such as web applications. Web applications are utilized by many people in different sectors, including the trade/e-commerce sector, as seen in platforms like Tokopedia, and in e-learning, exemplified by the web application Scele used by students at the Faculty of Computer Science, University of Indonesia. In its usage, a web application must exhibit good performance when accessed by numerous users to avoid disrupting the workflow within the application. In addition to performance, web applications need to be optimized for search engines (SEO - Search Engine Optimization). There are web frameworks that support both good performance and SEO, and one such example is NextJs.
 
-# Apa Itu NextJS ?
+# What Is Next.js ?
 
-NextJs adalah kerangka kerja yang digunakan oleh pengembang untuk membuat aplikasi web. Next Js berbasiskan library React Js sehingga pengguna yang telah terbiasa membuat aplikasi menggunakan React Js tidak akan kesulitan menggunakan NextJs. Selain itu juga NextJs menggunakan bahasa pemrograman javascript agar dapat beroperasi. NextJs diciptakan oleh tim pengembang bernama Vercel dan dapat digunakan oleh pengembang secara gratis. Pengembang yang baru memulai dapat menggunakan dokumentasi yang disediakan oleh Vercel untuk belajar menggunakan kerangka kerjanya dan dapat mengunggah aplikasi yang dibuat di server milik Vercel.
+Next.js is a framework used by developers to create web applications. It is based on the React Js library, making it easy for users familiar with React Js to transition to Next.js seamlessly. Additionally, Next.js uses the JavaScript programming language for operation. Next.js was developed by a team known as Vercel and is available for developers to use for free. Beginners can refer to the documentation provided by Vercel to learn how to use the framework and can deploy their applications on Vercel's servers.
 
-## Keuntungan
+## Advantages
 
 ![img](/static/images/blog/next_img2.webp)
 
-Kerangka kerja NextJs memiliki banyak keuntungan yang ditawarkan untuk pengguna aplikasi web. Dalam hal performa, NextJs menawarkan opsi yang meningkatkan kecepatan memuat aplikasi, contohnya :
+The Next.js framework offers numerous advantages for users of web applications. In terms of performance, Next.js provides options that enhance application loading speed, such as:
 
-- Next Image, membuat ukuran bit gambar menjadi lebih kecil
-- SSG (Static Site Generator) yang memungkinkan browser pengguna untuk memuat file tanpa harus menunggu server merender file tersebut.
-- Hanya ada 1 HTML file untuk setiap request pada web
-  NextJs juga menawarkan pengembang untuk mengatur kata kunci pencarian sehingga meningkatkan nilai SEO aplikasi menggunakan fitur Next SEO.
+- Next Image, reducing the size of image files
+- SSG (Static Site Generator), enabling the user's browser to load files without waiting for the server to render them.
+- Only one HTML file for each request on the web.
+- Next.js also allows developers to configure search keywords, thereby improving the SEO value of applications using the Next SEO feature.
 
-## Kekurangan
+## Disadvantages
 
-Walaupun memiliki banyak keuntungan, terdapat beberapa kontra yang dimiliki oleh NextJs. Komunitas yang dimiliki NextJs masih lebih sedikit dibanding kerangka kerja lain seperti Laravel, hal ini disebabkan NextJs termasuk kerangka kerja yang baru muncul pada tahun 2016. NextJs belum menawarkan State Management data yang terkait sehingga pengembang perlu menggunakan library lain seperti redux. NextJs adalah kerangka kerja aplikasi web yang kaya fitur sehingga meningkatkan performa aplikasi dan nilai SEO. Penggunaan NextJs membuat aplikasi dapat digunakan oleh banyak orang dengan lebih baik dan tidak mengganggu kelancaran proses bisnis yang terjadi. Dengan fitur yang ditawarkan Pengembang juga harus memperhatikan kekurangan yang dimiliki dan mencari solusi penyelesaiannya.
+Despite its many advantages, Next.js does have some drawbacks. The Next.js community is smaller compared to other frameworks like Laravel, mainly because Next.js emerged as a framework in 2016. Next.js does not yet offer State Management for related data, requiring developers to use other libraries such as Redux. Next.js is a feature-rich web application framework that enhances application performance and SEO value. Its use allows applications to be used more effectively by a larger audience without disrupting the smooth flow of business processes. However, developers should be aware of the framework's limitations and seek solutions to address them.
 
-# Memulai menggunakan NextJS
+# Getting Started with Next.js
 
 ![img](/static/images/blog/next_img3.webp)
 
-Vercel sebagai pencipta framework tersebut membuat module yang dapat digunakan oleh developer untuk membuat suatu boilerplate sebelum memulai menulis kode. Selain itu juga terdapat beberapa tools yang diharus terinstall pada komputer dimiliki yaitu
+Vercel, as the creator of the framework, has developed modules that developers can use to create a boilerplate before starting to write code. Additionally, there are several tools that must be installed on the computer, namely:
 
-- NodeJS, dicek melalui node -version pada command line
-- npm, dicek melalui npm -version pada command line
-  Apabila kedua hal tersebut, pengguna dapat membuka folder kosong tujuan dan menjalankan
+- Node.js, checked through node -version in the command line
+- npm, checked through npm -version in the command line
+
+If both of these are installed, users can open the target empty folder and run
 
 ```bash
 npm install -g create-next-app
 ```
 
-Tunggu hingga proses selesai dan jalankan
+Wait until the process is finished and then run command :
 
 ```bash
 npx create-next-app
 ```
 
-Setelah setelah NextJS dapat dijalankan pada server developement menggunakan command
+After that, we can run the development server using command :
 
 ```bash
 npm run dev
 ```
 
-Dan aplikasi dapat dilihat pada http://localhost:3000
+And the application can be accessed through http://localhost:3000
 
-Referensi :
+Reference :
 
 - https://nextjs.org/
 - https://blog.logrocket.com/ssg-vs-ssr-in-next-js/

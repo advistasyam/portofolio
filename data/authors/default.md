@@ -9,6 +9,6 @@ linkedin: https://www.linkedin.com/in/advis-tasyah-mulia-5209791a1/
 github: https://github.com/advistasyam
 ---
 
-Advis Tasyah Mulia is an aspiring software engineer, keen to make human life easier by providing simpler ways to solve problems because he is a good fan of good life.
+Advis Tasyah Mulia is an aspiring software engineer with a passion for simplifying human life through innovative solutions. With a strong desire to enhance the quality of life, Advis is dedicated to finding practical and straightforward ways to solve complex problems.
 
-Advis is Computer Science Fresh Graduate from University of Indonesia in 3,5 years. He is also passionate to solve computational problems and communicate complex solutions to non-technical stakeholders.
+He holds a degree in Computer Science from the University of Indonesia. Along with his technical expertise, Advis excels in solving computational challenges and effectively communicating intricate solutions to non-technical stakeholders, showcasing his ability to bridge the gap between technical and non-technical domains.

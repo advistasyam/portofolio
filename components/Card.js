@@ -1,8 +1,13 @@
 import Image from './Image'
 import Link from './Link'
 
-const Card = ({ title, description, imgSrc, href }) => (
-  <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
+const Card = ({ title, description, imgSrc, href, isLeft, role, techStack }) => (
+  <div
+    className="md p-4 md:w-1/2"
+    style={{ maxWidth: '544px' }}
+    data-aos={isLeft ? 'fade-down-right' : 'fade-down-left'}
+    data-aos-duration="1000"
+  >
     <div
       className={`${
         imgSrc && 'h-full'
@@ -38,7 +43,20 @@ const Card = ({ title, description, imgSrc, href }) => (
             title
           )}
         </h2>
+        {role && <p className="prose mb-3 max-w-none text-grad2">{role}</p>}
         <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
+        <div className="mb-6 flex flex-wrap gap-3">
+          {techStack &&
+            techStack.map((val, index) => (
+              <p
+                className="rounded-full border border-grad2 px-3 py-2 text-gray-500 dark:text-gray-400"
+                key={index}
+              >
+                {val}
+              </p>
+            ))}
+        </div>
+
         {href && (
           <Link
             href={href}

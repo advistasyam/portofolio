@@ -13,53 +13,53 @@ authors: ['default']
   ![thumbnail](/static/images/blog/refactoring_img1.jpeg)
 </div>
 
-Menurut <u>Martin Fowler Refactoring</u>, definisi refactoring adalah
+From <u>Martin Fowler Refactoring</u>, definition of refactoring is
 
 > “Refactoring (noun): a change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its observable behavior.”
 
-Secara bahasa indonesia dapat dikatakan kita memperbaiki struktur dan desain kode tanpa mengubah behavior kode yang sudah ada. Dalam software engineering, refactoring merupakan hal yang sering terjadi pada proses pengembangannya. Tujuannya adalah meningkatkan code quality dan bermanfaat akan terlihat dalam jangka panjang ketika terdapat improvement software yang akan dilakukan.
+In literal, it can be said that we are improving the structure and design of the code without changing the existing code's behavior. In software engineering, refactoring is a common practice during the development process. Its purpose is to enhance code quality, and the benefits become apparent in the long term when software improvements are needed.
 
 # When To REFACTOR ?
 
-Menurut website refactoring.guru, terdapat 4 waktu yang tepat untuk melakukan refactoring, yaitu :
+according to refactoring.guru website, there are 4 perfect times to do refactoring, there are :
 
 **1. When we add new feature**
 
-imajinasikan suatu keadaan dimana kita melanjutkan kode dari developer sebelumnya dan kode tersebut “kotor” sehingga kita tidak dapat memahami dengan waktu yang singkat contoh 5 menit pertama. Tentu hal ini akan membuat developer kesal dan dapat berdampak buruk pada produktivitas. sebelum memulai ke fitur baru, kode yang buruk dapat dilakukan refactor terlebih dahulu agar flow dan fungsi kode dapat lebih mudah dimengerti.
+Imagine a situation where we inherit code from a previous developer, and the code is 'messy,' making it difficult for us to understand within the first 5 minutes. This can be frustrating for developers and can negatively impact productivity. Before adding new features, it's advisable to refactor the poorly written code first, so that the code's flow and functionality become easier to comprehend.
 
 **2. When we fix bug**
 
-saat memperbaiki bug, salah satu pendekatan yang dapat dilakukan adalah melakukan refactoring. Dengan refactoring, bug yang tersembunyi dapat menjadi terlihat karena kode yang lebih rapi. Selain itu juga refactoring dapat membuat proses debugging lebih cepat dan meminimalisir waktu pengembangan.
+When fixing bugs, one approach is to refactor the code. Refactoring can bring hidden bugs to light because of the cleaner code. Additionally, refactoring can speed up the debugging process and minimize development time.
 
 **3. When we code review**
 
-keadaan berikut membutuhkan kerja sama dengan orang lain. kode yang telah kita buat belum tentu dapat dibaca dengan jelas dengan orang lain, maka dilakukan code review terlebih dahulu. Saran yang diberikan peer dapat menjadi masukan yang penting dalam melakukan refactoring.
+In such situations, collaboration with others is crucial. Code we write might not be easily understood by others, so it's important to conduct code reviews. Feedback from peers can be invaluable when refactoring.
 
 **4. Rule Of Three**
 
-maksud dari rule of three adalah ketika kita menambahkan hal yang serupa sampai dengan tiga kali, maka berhenti menggunakan step yang sama lakukan refactoring. Beberapa hal yang dapat dilakukan adalah membuat suatu reuseable code seperti component atau function.
+The idea behind the 'rule of three' is that if you find yourself doing something similar three times, it's time to stop and refactor. One approach is to create reusable code components or functions.
 
-Manfaat yang ditemukan dalam melakukan refactoring adalah :
+The benefits of refactoring include:
 
-1. Code lebih mudah untuk dimodifikasi
-2. Code lebih mudah untuk dipahami
-3. Salah satu cara berbagi ilmu antar anggota tim
+1. Code becomes easier to modify.
+2. Code becomes easier to understand.
+3. It serves as a way to share knowledge among team members.
 
-# Implementasi pada PPL 2022
+# Implementation in PPL Project 2022
 
-pada PPL 2022, kami menggunakan sonarqube untuk dapat mengetahui kelemahan yang terdapat pada kode aplikasi. Sonarqube menampilkan informasi mengenai coverage,bugs,code smells,duplication, dan security issues.
+In PPL 2022, we used SonarQube to identify weaknesses in the application code. SonarQube provides information about coverage, bugs, code smells, duplication, and security issues.
 
 <div className={'flex items-center justify-center'}>
   ![img](/static/images/blog/refactoring_img2.webp)
 </div>
 
-Perhatikan pada line 62 dan line 67, karena konsep javascript yang hoisting semua variable ke scope paling atas maka line 67 dianggap sebagai variable responseData pertama dengan demikian responseData pada line 62 dianggap duplikat. Hal berikut dapat membingungkan anggota tim, maka dengan itu saya ubah menjadi
+Pay attention to lines 62 and 67. Due to the JavaScript hoisting concept, all variables are moved to the top scope. Therefore, line 67 is considered the first occurrence of the variable 'responseData,' making the 'responseData' variable on line 62 a duplicate. This can confuse team members, so I have modified it to:
 
 ```javascript
 const responseDataError = await response.json()
 ```
 
-hal ini dikarenakan juga karena variable tersebut merupakan data error yang dikirimkan oleh API.
+this is also because the variable represents error data sent by the API.
 
 <div className={'flex items-center justify-center'}>
   ![img](/static/images/blog/refactoring_img3.webp)
@@ -72,32 +72,32 @@ hal ini dikarenakan juga karena variable tersebut merupakan data error yang diki
   ![img](/static/images/blog/refactoring_img4.webp)
 </div>
 
-Refactoring lainnya adalah merubah hardcode link URL backend. Menurut rule of three, hardcode tersebut telah ditemukan lebih dari 3 kali maka saya memutuskan untuk membuat fungsi baru untuk mendapatkan BE_URL yang tepat. Kegiatan tersebut membuat kode yang ditulis lebih singkat dan lebih mudah dipahami. Selain itu juga apabila terdapat perpindahan url, maka kode yang dibuah hanya pada bagian fungsi getBackendUrl() saja.
+Another refactoring involves changing the hardcoded backend URL links. Following the rule of three, this hardcoded value has been encountered more than three times, so I decided to create a new function to retrieve the correct 'BE_URL.' This activity makes the code shorter and easier to understand. Moreover, if there is a URL change, only the 'getBackendUrl()' function needs to be modified.
 
-# Metode Refactoring
+# Refactoring Method
 
 <div className={'flex items-center justify-center'}>
   ![img](/static/images/blog/refactoring_img5.webp)
 </div>
 
-Menurut buku Refactoring oleh Martin Fowler, Terdapat metode metode refactoring, buku tersebut membahas dan menjabarkan dengan membagi kategori yang dipisah berdasarkan tujuannya. Beberapa tujuan dan pendekatan menurut buku fowler adalah :
+According to the book 'Refactoring' by Martin Fowler, there are several refactoring methods discussed and categorized based on their objectives. The book divides these methods into separate categories. Some of the objectives and approaches, according to Fowler's book, are:
 
-**1. Grouping functions**
+**1. Grouping Functions**
 
-Grouping function berfokus pada penggabungan suatu metode fungsi menjadi satu objek class saja. Sehingga import dan export fungsi tersebut hanya memanggil classnya saja. Contoh implementasi metodenya adalah <u>Combine Functions into Class</u>.
+Grouping functions focus on combining multiple methods into a single class object. This way, the import and export of these functions only involve calling the class. An example implementation of this method is <u>Combine Functions into Class</u>.
 
-**2. Organizing data**
+**2. Organizing Data**
 
-Organizing data yang dimaksud adalah dalam hal menyimpan variable variable penting. Seperti contoh pada PPL Paytungan adalah URL untuk menyimpan static file pada GCP. Maka URL tersebut disimpan menjadi suatu konstanta yang akan dipanggil. Refactoring seperti ini disebut <u>Replace Magic Literal</u>.
+Organizing data refers to storing important variables, such as URLs for static files in the case of PPL Paytungan, as constants that can be called when needed. This type of refactoring is called <u>Replace Magic Literal</u>.
 
 **3. Encapsulation**
 
-Proses Encapsulation adalah unified function and variable dimana kita menyimpan data dan metode pada satu class, dengan encapsulation juga kita dapat menyimpan varible class hingga tidak dapat diakses oleh objek lain. Contohnya adalah metode <u>Inline Class</u>.
+The process of encapsulation involves unifying functions and variables within a single class. With encapsulation, data and methods are stored in one class, and variables can be made inaccessible to other objects. An example of this is the <u>Inline Class</u> method.
 
 **4. Inline**
 
-Inline sendiri bertujuan untuk membentuk if else statement menjadi lebih singkat yaitu 1 baris. Penggunaan pada Javascript yaitu menggunakan ternary operator. Contoh metode refactoring seperti ini adalah <u>Inline Function</u>.
+'Inline' aims to condense if-else statements into a single line, often utilizing ternary operators in JavaScript. An example of this refactoring method is <u>Inline Function</u>.
 
-**5. Simplifying conditional logic**
+**5. Simplifying Conditional Logic**
 
-Logic panjang if else hingga nested if else kadang menyulitkan developer untuk memahaminya, Maka diperlukan simplifikasi. Contoh metode refactoring <u>Replace Nested Conditionals with Guard Clauses</u>.
+Long and nested if-else statements can be challenging for developers to understand. Simplification is necessary in such cases. An example refactoring method is <u>Replace Nested Conditionals with Guard Clauses</u>.
